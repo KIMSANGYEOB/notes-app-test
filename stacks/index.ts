@@ -1,5 +1,5 @@
-import MyStack from "./MyStack";
 import * as sst from "@serverless-stack/resources";
+import StorageStack from "./StorageStack";
 
 export default function main(app: sst.App): void {
   // Set default runtime for all functions
@@ -7,7 +7,7 @@ export default function main(app: sst.App): void {
     runtime: "nodejs14.x"
   });
 
-  new MyStack(app, "ksy-stack");
+  new StorageStack(app, "storage-sykim");
 
   // Add more stacks
 }

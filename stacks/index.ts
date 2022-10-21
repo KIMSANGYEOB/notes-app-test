@@ -1,4 +1,5 @@
 import * as sst from "@serverless-stack/resources";
+import ApiStack from "./ApiStack";
 import StorageStack from "./StorageStack";
 
 export default function main(app: sst.App): void {
@@ -7,7 +8,10 @@ export default function main(app: sst.App): void {
     runtime: "nodejs14.x"
   });
 
-  new StorageStack(app, "storage-sykim");
+  const storageStact = new StorageStack(app, "storage-sykim");
 
+  new ApiStack(app, 'api-sykim', {
+    table: storageStact.table
+  });
   // Add more stacks
 }
